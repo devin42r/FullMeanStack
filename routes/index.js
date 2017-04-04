@@ -1,3 +1,4 @@
+process.title = "Full";
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
@@ -37,5 +38,10 @@ router.put('/comments/:comment/upvote', function(req, res, next) {
     if (err) { return next(err); }
     res.json(comment);
   });
+});
+router.delete('/comments/:comment', function(req, res) {
+  console.log("in Delete");
+  req.comment.remove();
+  res.json(req.comment);
 });
 module.exports = router;
